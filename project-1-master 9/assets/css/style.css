@@ -1,0 +1,195 @@
+/* @font-face {
+    font-family: 'pizza_font';
+    src: url('hotpizza-webfont.woff2') format('woff2'),
+         url('hotpizza-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} */
+body {
+	background: white;
+}
+#zomato {
+	font-family: 'Indie Flower', cursive;
+	font-size: x-large;
+	font-weight: bold;
+}
+
+#search-bar {
+	margin-left: 50px;
+}
+#search-input {
+    background-color: white;
+	width: 350px;
+	margin-left: 20%;
+	margin-bottom: 20px;
+}
+#zomato-input {
+	background-color: white;
+	width: 350px;
+	margin-left: 20%;
+	margin-bottom: 40px;
+}
+h1 {
+	margin-left: 20%;
+}
+#search-button {
+    margin-top:50px;
+}
+
+.search_label {
+	font-size: 20px;
+	margin-left: 50px;
+
+}
+#search {
+	margin-left: 150px;
+	margin-bottom: 50px;
+	margin-left: 20%;
+}
+.container {
+	text-align: center;
+	display: block;
+}
+#zomato-search {
+	margin-left: 20%;
+
+}
+#images-recipe {
+	text-align: center;
+
+}
+#box {
+	display: block;
+	width: 25%;
+	float: left;
+}
+#box2 {
+	display: block;
+}
+#images-recipe {
+	text-align: left;
+	height: 150px;
+	width: 150px;
+}
+#ingredients {
+	text-align: right;
+}
+#yelp_img {
+	height: 60px;
+	width: 40%;
+}
+#footer {
+	height:25px;
+	background: grey;
+}
+.fixed-bottom {
+	position: center;
+}
+#icon_div {
+	text-align: center;
+}
+#logo {
+	text-align: center;
+}
+#login_btns {
+	text-align: center;
+}
+#sign_up_btn {
+	background: #ED1C24;
+	margin-right: 40px;
+	font-weight: bold;
+	color: white;
+}
+#sign_in_btn {
+	background: #ED1C24;
+	font-weight: bold;
+	color: white;
+}
+.login_form {
+	margin: auto;
+	width: 30%;
+}
+#login_btn {
+	background: #ED1C24;
+	font-weight: bold;
+	color: white;
+}
+#confirm_pass {
+	margin-top: 10px;
+}
+#login_btn2 {
+	background: #ED1C24;
+	font-weight: bold;
+	color: white;
+}
+#sign_up_btn2 {
+	background: #ED1C24;
+	margin-right: 40px;
+	font-weight: bold;
+	color: white;
+}
+iframe {
+	width: 800px;
+	height: 800px;
+}
+#imagepara {
+	height: 800px;
+	width: 800px;
+}
+#imgpara {
+
+}
+.parallax-container {
+  	height: 400px;
+}
+#collapse {
+	margin-left: 20%;
+}
+#logofood {
+	padding-left: 45%;
+	background-color: white;
+	height: 250px;
+	padding-bottom: 2%;
+}
+#footer {
+	text-align: center;
+	background: #ED1C24;
+	color: white;
+	font-family: 'Indie Flower', cursive;
+	font-size: larger;
+}
+#welcome {
+	font-size: 40px;
+	margin-bottom: 30px;
+}
+#intro_div {
+	text-align: center;
+}
+#intro {
+	margin-left: 20%;;
+	font-family: 'Indie Flower', cursive;
+	font-size: 30px;
+}
+#intro_2 {
+	font-family: 'Indie Flower', cursive;
+	font-size: 30px;
+	margin-left: 20%;
+}
+#home-2 {
+	height: 130%;
+}
+.font {
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
+	margin-bottom: 40px;
+}
+#zomatolist {
+	padding-top: 5%;
+	padding-left: 20%;
+}
+#user-name {
+	margin-left: 50px;
+	font-family: 'Indie Flower', cursive;
+	font-size: x-large;
+
+}
