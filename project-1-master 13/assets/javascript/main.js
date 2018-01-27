@@ -10,8 +10,11 @@ var config = {
   firebase.initializeApp(config);
 
 
-// global variables
+
+// not currently using, but for future advancements to store data
   var database = firebase.database();
+
+  // global variables
   var search = '';
   var zomatoSearch = '';
   var zomatoKey = "0773a4de72d921649a1fca4f24d04bce";
@@ -27,27 +30,32 @@ var config = {
     userEmail = $("#input_email").val().trim();
     userPassword = $("#input_password").val().trim();
     confirmPassword = $("#confirm_password").val().trim();
-    if (userValidation()==true) {
     var auth = firebase.auth();
+
+    // if it passes all conditionals
+    if (userValidation()==true) {
 
     // creating a new user with firebase method
     auth.createUserWithEmailAndPassword(userEmail, userPassword).catch(function(error) {
-        // handling of any errors being processed
+       
+     // handling of any errors being processed
       var errorCode  = error.code;
       var errorMessage = error.message;
       console.log("Error Message: " + errorMessage);
       console.log("Error code: " + errorCode);
 
-      // calling for password/email validation
+      // user is created and taken to home page
       }).then(function(success){
       window.location.href= "./home.html";
       console.log("woohoo");
     });
     }
 });
-//parallax
+//materialize images
 $('.parallax').parallax();
 
+
+// signing up a new user
 $("#login_btn2").on("click",function(event){
     event.preventDefault();
     userEmail = $("#input_email").val().trim();
@@ -60,17 +68,18 @@ $("#login_btn2").on("click",function(event){
         userValidation();
         console.log("Problem: " + errorCode + " Message: " +errorMessage);
 	}).then(function(success){
-        console.log("Logged In Success" + userEmail);
+        console.log("Logged In Success: " + userEmail);
         window.location.href="./home.html";
-    })
+    });
 });
 
-
+// checking state if a user is signed in or not
 firebase.auth().onAuthStateChanged(function(user) {
     if (user != null) {
+    // grabbing user name from the object
     email= user.email;
     console.log(email);
-    $("#user-name").html("Logged in as : " + email).css("color", "red");
+    $("#user-name").html(email).css("color", "red");
 }
 else {
     $("#user-name").hide();
@@ -81,10 +90,6 @@ else {
 
 // signing out a user
 $("#logout").on("click",function() {
-
-    // confirming signout with a modal
-    $("#modal1").modal();
-
     firebase.auth().signOut().then(function(success) {
         console.log('Signed Out', success);
       }, function(error) {
@@ -133,7 +138,7 @@ function userValidation() {
     };
     };
 
-// on click function
+// on click for searching a recipe
 $("#search").on("click",function(event) {
     event.preventDefault();
     // storing the search input
@@ -143,10 +148,9 @@ $("#search").on("click",function(event) {
 
     // calling ajax
     getRecipe();
-    // getVideo();
 });
 
-
+// ajax for getting a random recipe
 function getRecipe() {
     var foodURL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=3&tags=" + search;
 
@@ -162,6 +166,7 @@ function getRecipe() {
         //   var randomRecipe = recipe[Math.floor(Math.random() * recipe.length)];
         //   console.log(randomRecipe);
 
+        // appending to iframe
           var recipeFrame1 = $("<iframe>").attr("src", response.recipes[0].spoonacularSourceUrl);
           var recipeFrame2 = $("<iframe>").attr("src", response.recipes[1].spoonacularSourceUrl);
           var recipeFrame3 = $("<iframe>").attr("src", response.recipes[2].spoonacularSourceUrl);
@@ -171,8 +176,33 @@ function getRecipe() {
       });
     };
 
+    // getting a random food fact
+function getRandomFact() {
+    var factsURL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/trivia/random";
+    $.ajax({
+        url:factsURL,
+        method: "GET",
+        dataType: "json",
+        headers: {"X-Mashape-Key":"Dt9Xg2tPUSmsh9L4MxBy6vXKq18Zp1Eb87fjsnLLIYrk0DnUBv"}
+      })
+      .done(function(facts) {
+          console.log(facts.text);
+          $("#random-facts").append(facts.text);
+      });
+};
 
+// calling our function and materialize
+$("#menu").on("click",function(){
+    getRandomFact();
 
+    // emptying facts on each click
+    $("#random-facts").empty();
+
+    // materialize target
+    $('.tap-target').tapTarget('open');
+});
+
+// 
 $("#zomato-search").on("click",function(event) {
     event.preventDefault();
     zomatoSearch = $("#zomato-input").val().trim();
@@ -181,7 +211,7 @@ $("#zomato-search").on("click",function(event) {
 });
 
 
-
+// returns restaurants nearby
 function getZomato() {
     var zomatoURL = "https://developers.zomato.com/api/v2.1/search?q=" + zomatoSearch;
     $.ajax({
